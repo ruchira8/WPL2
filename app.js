@@ -8,11 +8,12 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 var morgan = require("morgan");
-var flash    = require('connect-flash');
+var flash = require('connect-flash');
+var bcrypt = require('bcrypt-nodejs');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var db = require('./models/db');
+var db = require('./config/db');
 mongoose.connect(db.url);
 //var passportConfig = require('./config/passport');
 
@@ -30,7 +31,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(session({secret: 'ilovescotchscotchyscotchscotch'})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash());
@@ -38,6 +39,7 @@ app.use(flash());
 app.use('/', index);
 app.use('/users', users);
 require('./routes/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+var User = require('./models/user');
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -60,3 +62,32 @@ app.use(function (err, req, res, next) {
 //module.exports = app;
 app.listen(3000);
 console.log('The magic happens on port 3000');
+
+/*var user = new User({
+ userName: "priyanka",
+ name: "Priyanka",
+ password: "12345",
+ address: "Dallas,TX",
+ email: "priyanka@email.com",
+ phome: "1234567891",
+ zipcode: "75252"
+ });*/
+/*var password = "priyanka";
+ var newUser = new User();
+ newUser.name = "Priyanka";
+ newUser.userName = "priyanka";
+ newUser.address = "Dallas,TX";
+ newUser.email = "priyanka@email.com";
+ newUser.phNo = "1234567891";
+ newUser.zipCode = "75252";
+ /!*newUser.hash = crypto.randomBytes(16).toString('hex');
+ newUser.salt = crypto.pbkdf2Sync(new Buffer(password, 'binary'), this.salt, 1000, 64).toString('hex');*!/
+ newUser.password = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+ newUser.save(function (err) {
+ if (err) {
+ console.log("Error saving");
+ } else {
+ console.log("Saved");
+ }
+
+ });*/
