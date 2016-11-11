@@ -1,13 +1,13 @@
 extends layout
 
 block content
-  .container
     .container
-      div(ng-app='jetbrains', ng-controller='AppCtrl as app')
-        | User Name:
-        input.form-control(ng-model='app.userName', required='')
-        |         Password:
-        input.form-control(ng-model='app.password', required='')
-        button.btn.btn-primary(ng-click='app.authenticateUser(app.userName, app.password)') Login
+        .container
+            div(ng-app='jetbrains', ng-controller='AppCtrl as app')
+                | User Name:
+                input.form-control(ng-model='app.userName', required='')
+                |         Password:
+                input.form-control(ng-model='app.password', required='')
+                button.btn.btn-primary(ng-click='app.authenticateUser(app.userName, app.password)') Login
 
-        script(src='/javascripts/controllers/login.js')
+                script(src='/javascripts/controllers/login.js')
