@@ -7,7 +7,7 @@ block content
                 | User Name:
                 input.form-control(ng-model='app.userName', required='')
                 |         Password:
-                input.form-control(ng-model='app.password', required='')
+                input.form-control(ng-model='app.password', type='password', required='')
                 button.btn.btn-primary(ng-click='app.authenticateUser(app.userName, app.password)') Login
 
                 script(src='/javascripts/controllers/login.js')

@@ -11,11 +11,14 @@ var morgan = require("morgan");
 var flash = require('connect-flash');
 var bcrypt = require('bcrypt-nodejs');
 
+//require('./config/passport')(passport);
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 var db = require('./config/db');
 mongoose.connect(db.url);
 //var passportConfig = require('./config/passport');
+
 
 var app = express();
 app.use(passport.initialize());
