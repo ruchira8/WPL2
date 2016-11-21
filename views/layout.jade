@@ -8,3 +8,20 @@ html
     body
         script(src='/javascripts/bower_components/angular/angular.js')
         block content
+            nav.navbar.navbar-inverse
+                .container-fluid
+                    #myNavbar.collapse.navbar-collapse
+                        ul.nav.navbar-nav
+                            li.active
+                                a(href='#') Home
+                            li
+                                a(href='#about') About
+                            li
+                                a(href='#projects') Projects
+                            li
+                                a(href='#contact') Contact
+                        ul.nav.navbar-nav.navbar-right
+                            li
+                                a(href='login.html')
+                                    span.glyphicon.glyphicon-log-in
+                                    |  Login
