@@ -2,9 +2,8 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{WPL2/node_modules}" />
-    <file url="PROJECT" libraries="{WPL2/node_modules, mongoose-DefinitelyTyped, passport-DefinitelyTyped}" />
+    <file url="PROJECT" libraries="{WPL2/node_modules, angularjs-DefinitelyTyped, bcrypt-nodejs-DefinitelyTyped, express-DefinitelyTyped, mongoose-DefinitelyTyped, passport-DefinitelyTyped}" />
     <includedPredefinedLibrary name="ECMAScript 6" />
-    <includedPredefinedLibrary name="Node.js Core" />
     <includedPredefinedLibrary name="WebGL" />
   </component>
 </project>

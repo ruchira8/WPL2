@@ -2,11 +2,24 @@ extends layout
 
 block append content
     .container
-    div(ng-app='jetbrains', ng-controller='AppCtrl as app')
-        | User Name:
-        input.form-control(ng-model='app.userName', required)
-        |         Password:
-        input.form-control(ng-model='app.password', required)
-        button.btn.btn-primary(ng-click='app.authenticateUser(app.userName, app.password)') Login
-
-        script(src='/javascripts/controllers/login.js')
+        .col-sm-6.col-sm-offset-3
+            h1
+                span.fa.fa-sign-in
+                |  Login
+            // LOGIN FORM
+            form(action='/login', method='post')
+                .form-group
+                    label Username
+                    input.form-control(type='text', name='userName')
+                .form-group
+                    label Password
+                    input.form-control(type='password', name='password')
+                button.btn.btn-primary.btn-lg(type='submit') Login
+            hr
+            p
+                | Need an account?
+                a(href='/signup') Signup
+            p
+                | Or go
+                a(href='/') home
+                | .

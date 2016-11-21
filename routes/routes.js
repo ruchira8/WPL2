@@ -4,67 +4,37 @@ module.exports = function (app, passport) {
     });
 
     app.get('/login', function(req, res) {
-        console.log("Login entered");
-        // render the page and pass in any flash data if it exists
         res.render('index.jade');
     });
-    /*app.post('/login', function (req, res) {
-        console.log(req.body.userName);
-        console.log(req.body.password);
+    app.get('/signup', function(req, res) {
+        res.render('signup.jade');
+    });
+    app.get('/success', function(req, res) {
+        res.render('success.jade');
+    });
 
-    });*/
-    /*app.get('/signup', function(req, res) {
+    app.post('/signup', function(req, res, next) {
+        passport.authenticate('local-signup', function(err, user, info) {
+            if (err) { return next(err); }
+            if (!user) { return res.redirect('/login'); }
+            req.logIn(user, function(err) {
+                if (err) { return next(err); }
+                return res.redirect('/users/' + user.username);
+            });
+        })(req, res, next);
+    });
 
-        // render the page and pass in any flash data if it exists
-        res.render('signup.ejs');
-    });*/
-    /*app.post('/signup', function (req, res) {
-        console.log(req.body.userName);
-        console.log(req.body.password);
-        console.log(req.body.email);
-        console.log(req.body.name);
-        console.log(req.body.address);
-        console.log(req.body.phNo);
-        console.log(req.body.zipCode);
-    });*/
-    /*app.post('/signup', passport.authenticate('local-signup',{
-        successRedirect: '/login',
-        failureFlash: 'Invalid username and password'
-       // failureRedirect: '/'
-        //failureFlash: true
-    }));*/
-   app.post('/signup', passport.authenticate('local-signup',{
-        successRedirect: '/login'
-        //failureFlash: 'Invalid username and password'
-    }));
-   /* app.post('/signup',function(req,res){
-        console.log("Signup");
-        passport.authenticate('local-signup')(req, res, function () {
-            res.redirect('/login');
-        });
-    });*/
-   /* app.post('/login', passport.authenticate('local',{
-        successRedirect: '/',
-        failureFlash: 'Invalid username and password'
-    }));*/
+    app.post('/login', function(req, res, next) {
+        passport.authenticate('local', function(err, user, info) {
+            if (err) { return next(err); }
+            if (!user) { return res.redirect('/signup'); }
+            req.logIn(user, function(err) {
+                if (err) { return next(err); }
+                console.log("users login success"+user);
+                //return res.redirect('/users/' + user.userName);
+                return res.redirect('/success');
+            });
+        })(req, res, next);
+    });
 
-    app.post('/login', passport.authenticate('local',{
-        successRedirect: '/signup',
-        failureFlash: 'Invalid username and password'
-    },function(err, user, info){
-        console.log("Login successful");
-    }));
-    /*app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });*/
 };
-/*function isLoggedIn(req, res, next) {
-
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
-
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-}*/
