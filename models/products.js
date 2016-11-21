@@ -1,16 +1,15 @@
 var mongoose = require("mongoose");
 var productSchema = new mongoose.Schema({
-    itemCode: {
-        type: String,
-        unique: true,
-        required: true
-    },
     name: {
         type: String,
         unique: true,
         required: true
     },
     type: {
+        type: String,
+        required: true
+    },
+    description: {
         type: String,
         required: true
     },
@@ -22,9 +21,13 @@ var productSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    price: {
+    price: [{size: String, price: Number}]
+});
+var toppingSchema = new mongoose.Schema({
+    type: {
         type: String,
         required: true
-    }
+    },
+    toppings: [{name: String, price: Number}]
 });
 module.exports = mongoose.model('Product', productSchema);
