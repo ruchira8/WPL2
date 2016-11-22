@@ -4,23 +4,50 @@ module.exports = function (app, passport) {
     });
 
     app.get('/login', function(req, res) {
-        console.log("Login entered");
-        // render the page and pass in any flash data if it exists
         res.render('index.jade');
     });
+    app.get('/signup', function (req, res) {
+        res.render('signup.jade');
+    });
+    app.get('/success', function (req, res) {
+        res.render('success.jade');
+    });
 
-   app.post('/signup', passport.authenticate('local-signup',{
-        successRedirect: '/login'
-        //failureFlash: 'Invalid username and password'
-    }));
+    app.post('/signup', function (req, res, next) {
+        passport.authenticate('local-signup', function (err, user, info) {
+            if (err) {
+                return next(err);
+            }
+            if (!user) {
+                return res.redirect('/login');
+            }
+            req.logIn(user, function (err) {
+                if (err) {
+                    return next(err);
+                }
+                //return res.redirect('/users/' + user.userName);
+                return res.redirect('/success');
+            });
+        })(req, res, next);
+    });
 
-
-    app.post('/login', passport.authenticate('local',{
-        successRedirect: '/signup',
-        failureFlash: 'Invalid username and password'
-    },function(err, user, info){
-        console.log("Login successful");
-    }));
+    app.post('/login', function (req, res, next) {
+        passport.authenticate('local', function (err, user, info) {
+            if (err) {
+                return next(err);
+            }
+            if (!user) {
+                return res.redirect('/signup');
+            }
+            req.logIn(user, function (err) {
+                if (err) {
+                    return next(err);
+                }
+                console.log("users login success" + user);
+                //return res.redirect('/users/' + user.userName);
+                return res.redirect('/success');
+            });
+        })(req, res, next);
+    });
 
 };
-
