@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: 'ilovescotchscotchyscotchscotch'})); // session secret
+app.use(session({secret: 'donut'})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash());

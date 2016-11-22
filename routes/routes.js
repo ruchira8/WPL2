@@ -54,13 +54,6 @@ module.exports = function (app, passport) {
     },function(err, user, info){
         console.log("Login successful");
     }));
-
-    app.get('/home', function(req, res) {
-        console.log("home page");
-        // render the page and pass in any flash data if it exists
-        res.render('home.jade');
-    });
-
     /*app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
@@ -75,4 +68,3 @@ module.exports = function (app, passport) {
     // if they aren't redirect them to the home page
     res.redirect('/');
 }*/
-
