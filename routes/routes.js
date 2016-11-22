@@ -8,45 +8,12 @@ module.exports = function (app, passport) {
         // render the page and pass in any flash data if it exists
         res.render('index.jade');
     });
-    /*app.post('/login', function (req, res) {
-        console.log(req.body.userName);
-        console.log(req.body.password);
 
-    });*/
-    /*app.get('/signup', function(req, res) {
-
-        // render the page and pass in any flash data if it exists
-        res.render('signup.ejs');
-    });*/
-    /*app.post('/signup', function (req, res) {
-        console.log(req.body.userName);
-        console.log(req.body.password);
-        console.log(req.body.email);
-        console.log(req.body.name);
-        console.log(req.body.address);
-        console.log(req.body.phNo);
-        console.log(req.body.zipCode);
-    });*/
-    /*app.post('/signup', passport.authenticate('local-signup',{
-        successRedirect: '/login',
-        failureFlash: 'Invalid username and password'
-       // failureRedirect: '/'
-        //failureFlash: true
-    }));*/
    app.post('/signup', passport.authenticate('local-signup',{
         successRedirect: '/login'
         //failureFlash: 'Invalid username and password'
     }));
-   /* app.post('/signup',function(req,res){
-        console.log("Signup");
-        passport.authenticate('local-signup')(req, res, function () {
-            res.redirect('/login');
-        });
-    });*/
-   /* app.post('/login', passport.authenticate('local',{
-        successRedirect: '/',
-        failureFlash: 'Invalid username and password'
-    }));*/
+
 
     app.post('/login', passport.authenticate('local',{
         successRedirect: '/signup',
@@ -54,17 +21,6 @@ module.exports = function (app, passport) {
     },function(err, user, info){
         console.log("Login successful");
     }));
-    /*app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });*/
+
 };
-/*function isLoggedIn(req, res, next) {
 
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
-
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-}*/
