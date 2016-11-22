@@ -17,7 +17,7 @@ require('./config/passport')(passport);
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var db = require('./config/db');
+var db = require('./db');
 mongoose.connect(db.url);
 //var passportConfig = require('./config/passport');
 
@@ -42,6 +42,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash());
 app.use('/', index);
 app.use('/users', users);
+app.use(express.static('public'))
 require('./routes/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 var User = require('./models/user');
 

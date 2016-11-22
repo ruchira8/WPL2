@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+img {
+  resize: both;
+  height: 400px;
+  width: 1170px;
+}
+.mySlides {display:none}
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:13px;width:13px;padding:0}
+
