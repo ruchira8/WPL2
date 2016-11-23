@@ -7,6 +7,10 @@ html
         link(rel='stylesheet', href='/stylesheets/bower_components/bootstrap/dist/css/bootstrap-theme.min.css')
     body
         script(src='/javascripts/bower_components/angular/angular.js')
+        script(type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+        script(type='text/javascript' src='/javascripts/bower_components/angular/bin/popup.js')
+
+
         block content
             nav.navbar.navbar-inverse
                 .container-fluid
@@ -21,32 +25,15 @@ html
                             li
                                 a(href='#contact') Contact
                             li
-                                button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#myModal')
+                                a(href='#Cart')
                                     #cart
                                         span.glyphicon.glyphicon-shopping-cart Cart
-
-                                #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-                                    .modal-dialog
-                                        .modal-content
-                                            .modal-header
-                                                button.close(type='button', data-dismiss='modal')
-                                                    span(aria-hidden='true') ×
-                                                    span.sr-only Close
-                                                h4#myModalLabel.modal-title Modal title
-                                            .modal-body
-                                                | ...
-                                            .modal-footer
-                                                button.btn.btn-default(type='button', data-dismiss='modal') Close
-                                                button.btn.btn-primary(type='button') Save changes
-
-
-
-
                         ul.nav.navbar-nav.navbar-right
-                            ul.nav.navbar-nav.nav-tabs
-                                li
-                                    a(href='login.html')
-                                        span.glyphicon.glyphicon-log-in Login
+                            li
+                                a#modal_trigger(href='#modal')
+                                    span.glyphicon.glyphicon-log-in Login
+
+
 
 
         footer
@@ -83,4 +70,61 @@ html
                             li
                                 a.btn(href='#', title='Subscriptions')
                                     i.fa.fa-2x.fa-rss-square.orange-text
+
+    .container
+        #modal.popupContainer(style='display:none;')
+            header.popupHeader
+                span.header_title Login
+                span.modal_close
+                    i.fa.fa-times
+                    a#close.btn.btn_red(href='#') x
+            section.popupBody
+                // Username & Password Login form
+                .user_login
+                    form
+                        label Email / Username
+                        input(type='text')
+                        br
+                        label Password
+                        input(type='password',maxlength=8)
+                        br
+                        .action_btns
+                            .one_half
+                                a.btn.btn_red(href='#') Login
+                                    i.fa.fa-angle-double-left
+                            .one_half.last
+                                a#newuser.btn.btn_red(href='#') New User
+                    a.forgot_password(href='#') Forgot password?
+                // Register Form
+                .user_register
+                    form
+                        label Username
+                        input(type='text',maxlength=8)
+                        br
+                        label Email Address
+                        input(type='email')
+                        br
+                        label Password
+                        input(type='password')
+                        br
+                        label Name
+                        input(type='text')
+                        br
+                        label Address
+                        input(type='text')
+                        br
+                        label Phone No
+                        input(type='tel')
+                        br
+                        label Zipcode
+                        input(type='number',maxlength=8)
+                        br
+
+
+                        .action_btns
+                            .one_half
+                                i.fa.fa-angle-double-left
+                                a.btn.btn_red(href='#') Register
+                            .one_half.last
+                                a#existinguser.btn.btn_red(href='#') Back
 
