@@ -13,6 +13,10 @@ module.exports = function (app, passport) {
         res.render('success.jade');
     });
 
+    app.get('/home', function(req, res) {
+        res.render('home.jade');
+    });
+
     app.post('/signup', function (req, res, next) {
         passport.authenticate('local-signup', function (err, user, info) {
             if (err) {

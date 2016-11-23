@@ -11,8 +11,8 @@ html
             nav.navbar.navbar-inverse
                 .container-fluid
                     #myNavbar.collapse.navbar-collapse
-                        ul.nav.navbar-nav
-                            li.active
+                        ul.nav.navbar-nav.nav-tabs
+                            li
                                 a(href='#') Home
                             li
                                 a(href='#menu') Menu
@@ -20,8 +20,49 @@ html
                                 a(href='#about') About
                             li
                                 a(href='#contact') Contact
-                        ul.nav.navbar-nav.navbar-right
                             li
-                                a(href='login.html')
-                                    span.glyphicon.glyphicon-log-in
-                                    |  Login
+                                a(href='Cart.html')
+                                    #cart
+                                        span.glyphicon.glyphicon-shopping-cart Cart
+                        ul.nav.navbar-nav.navbar-right
+                            ul.nav.navbar-nav.nav-tabs
+                                li
+                                    a(href='login.html')
+                                        span.glyphicon.glyphicon-log-in Login
+
+
+        footer
+            .navbar.navbar-inverse.navbar-fixed-bottom
+                .container
+                    #footer-body.navbar-collapse.collapse
+                        ul.nav.navbar-nav
+                            li
+                                a(href='#') Browse Our Library
+                            li
+                                a(href='#') About Us
+                            li
+                                a(href='#') Contact Us
+                            li
+                                a(href='#') Our Partners
+                            li
+                                a(href='#') User Review
+                            li
+                                a(href='#') Terms & Conditions
+                            li
+                                a(href='#') Privacy Policy
+                    .navbar-header
+                        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#footer-body')
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        ul.footer-bar-btns.visible-xs
+                            li
+                                a.btn(href='#', title='History')
+                                    i.fa.fa-2x.fa-clock-o.blue-text
+                            li
+                                a.btn(href='#', title='Favourites')
+                                    i.fa.fa-2x.fa-star.yellow-text
+                            li
+                                a.btn(href='#', title='Subscriptions')
+                                    i.fa.fa-2x.fa-rss-square.orange-text
+
