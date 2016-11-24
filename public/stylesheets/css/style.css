@@ -30,7 +30,10 @@ h1 {
   background: #FFF;
 }
 
-
+.img.mySlides{
+  width: 330px;
+  height: 1170px;
+}
 
 .btn {
   padding: 10px 20px;
