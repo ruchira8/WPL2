@@ -4,12 +4,12 @@ module.exports = function (app, passport) {
     });
 
     app.get('/login', function(req, res) {
-        res.render('index.jade');
+        res.render('index.jade',{ message: req.flash('loginMessage')});
     });
     app.get('/signup', function (req, res) {
-        res.render('signup.jade');
+        res.render('signup.jade',{ message: req.flash('signupMessage')});
     });
-    app.get('/success', function (req, res) {
+   app.get('/success', function (req, res) {
         res.render('success.jade');
     });
 
@@ -17,26 +17,13 @@ module.exports = function (app, passport) {
         res.render('home.jade');
     });
 
+    /*app.get('/success', isLoggedInAjax, function(req, res) {
+        return res.json(req.user);
+        //console.log("res.json(req.user)"+res.json(req.user));
+    });*/
+
     app.post('/signup', function (req, res, next) {
         passport.authenticate('local-signup', function (err, user, info) {
-            if (err) {
-                return next(err);
-            }
-            if (!user) {
-                return res.redirect('/login');
-            }
-            req.logIn(user, function (err) {
-                if (err) {
-                    return next(err);
-                }
-                //return res.redirect('/users/' + user.userName);
-                return res.redirect('/success');
-            });
-        })(req, res, next);
-    });
-
-    app.post('/login', function (req, res, next) {
-        passport.authenticate('local', function (err, user, info) {
             if (err) {
                 return next(err);
             }
@@ -47,11 +34,42 @@ module.exports = function (app, passport) {
                 if (err) {
                     return next(err);
                 }
-                console.log("users login success" + user);
+                //req.flash('success','Success!');
                 //return res.redirect('/users/' + user.userName);
                 return res.redirect('/success');
             });
         })(req, res, next);
     });
 
+    app.post('/login', function (req, res, next) {
+        passport.authenticate('local', function (err, user, info) {
+            if (err) {
+                console.log("err" + err);
+                return next(err);
+            }
+            if (!user) {
+                console.log("info" + info);
+                res.render('index.jade',{ message: req.flash('loginMessage')});
+            }
+            req.logIn(user, function (err) {
+                if (err) {
+                    return next(err);
+                }
+                return res.redirect('/success');
+            });
+        },{failureFlash:true})(req, res, next);
+    });
+    function isLoggedInAjax(req, res, next) {
+        if (!req.isAuthenticated()) {
+            return res.json( { redirect: '/login' } );
+        } else {
+            next();
+        }
+    }
+    function isLoggedIn(req, res, next) {
+        if (req.isAuthenticated())
+            return next();
+
+        res.redirect('/');
+    }
 };

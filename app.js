@@ -1,4 +1,5 @@
 var express = require('express');
+var app = express();
 var mongoose = require("mongoose");
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -11,40 +12,53 @@ var morgan = require("morgan");
 var flash = require('connect-flash');
 var bcrypt = require('bcrypt-nodejs');
 
-
+var db = require('./config/db');
+mongoose.connect(db.url);
 
 require('./config/passport')(passport);
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var db = require('./config/db');
-mongoose.connect(db.url);
-//var passportConfig = require('./config/passport');
 
-var app = express();
-app.use(passport.initialize());
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-//app.use(express.bodyParser());
+app.use(morgan('dev'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser());
-app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: 'donut'})); // session secret
+var index = require('./routes/index');
+var users = require('./routes/users');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use(session({secret: 'donut'}));
+//var passportConfig = require('./config/passport');
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+app.use(passport.session());
 app.use(flash());
+app.use(function(req, res, next){
+    res.locals.loginMessage = req.flash('loginMessage');
+    res.locals.signupMessage = req.flash('signupMessage');
+    next();
+});
+// view engine setup
 app.use('/', index);
 app.use('/users', users);
-app.use(express.static('public'))
-require('./routes/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./routes/routes.js')(app, passport);
+app.use(express.static(path.join(__dirname, 'public')));
+// session secret
+// /app.use(session());
+//app.use(passport.initialize());
+// persistent login sessions
+
+// load our routes and pass in our app and fully configured passport
+app.use(express.static('public'));
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+//app.use(express.bodyParser());
+
+
+
+
 var User = require('./models/user');
+var Admin = require('./models/admin');
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -68,15 +82,19 @@ app.use(function (err, req, res, next) {
 app.listen(3000);
 console.log('The magic happens on port 3000');
 
-/*var user = new User({
- userName: "priyanka",
- name: "Priyanka",
- password: "12345",
- address: "Dallas,TX",
- email: "priyanka@email.com",
- phome: "1234567891",
- zipcode: "75252"
- });*/
+/*var admin = new Admin();
+    admin.userName= "admin";
+    admin.email= "admin@email.com";
+    admin.name= "admin";
+    admin.password= bcrypt.hashSync("password", bcrypt.genSaltSync(8), null);
+    admin.save(function(err){
+        if (err) {
+            console.log("Error saving");
+        } else {
+            console.log("Saved");
+        }
+    });*/
+
 /*var password = "priyanka";
  var newUser = new User();
  newUser.name = "Priyanka";
