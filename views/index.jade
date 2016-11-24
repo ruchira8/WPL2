@@ -57,7 +57,7 @@ html
                         p.help-block(ng-show='userForm.userName.$invalid && !userForm.userName.$pristine && userForm.userName.$error.maxlength') Username is too long.
                     .form-group
                         label Password
-                        input.form-control(type='password', name='password', ng-model='password', ng-minlength='6', required='')
+                        input.form-control(type='password', name='password', ng-model='password', ng-minlength='5', required='')
                         p.help-block(ng-show='userForm.password.$invalid && !userForm.password.$pristine && userForm.password.$error.minlength') Password is too short.
                     button.btn.btn-primary.btn-lg(type='submit', ng-disabled='userForm.$invalid') Login
                 hr

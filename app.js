@@ -35,6 +35,7 @@ app.use(flash());
 app.use(function (req, res, next) {
     res.locals.loginMessage = req.flash('loginMessage');
     res.locals.signupMessage = req.flash('signupMessage');
+    res.locals.adminMessage = req.flash('adminMessage');
     next();
 });
 // view engine setup
@@ -129,15 +130,24 @@ console.log('The magic happens on port 3000');
  }
  });*/
 
-/*var password = "priyanka";
- var newUser = new User();
- newUser.name = "Priyanka";
- newUser.userName = "priyanka";
+//var password = "priyanka";
+/*var newUser = new User();
+ newUser.name = "admin1";
+ newUser.userName = "admin1";
+ newUser.password = newUser.generateHash("admin");
  newUser.address = "Dallas,TX";
- newUser.email = "priyanka@email.com";
+ newUser.email = "admin1@email.com";
  newUser.phNo = "1234567891";
  newUser.zipCode = "75252";
- /!*newUser.hash = crypto.randomBytes(16).toString('hex');
+newUser.save(function (err) {
+    if (err) {
+        console.log("Error saving");
+    } else {
+        console.log("Saved");
+    }
+
+});*/
+ /*newUser.hash = crypto.randomBytes(16).toString('hex');
  newUser.salt = crypto.pbkdf2Sync(new Buffer(password, 'binary'), this.salt, 1000, 64).toString('hex');*!/
  newUser.password = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
  newUser.save(function (err) {

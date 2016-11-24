@@ -42,6 +42,7 @@ userSchema.methods.generateHash = function (password) {
 userSchema.methods.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 };
+
 /*userSchema.methods.generateJwt = function () {
     var expiry = new Date();
     expiry.setDate(expiry.getDate() + 7);
