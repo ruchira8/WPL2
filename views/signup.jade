@@ -1,41 +1,124 @@
-extends layout
-
-block append content
-    .container
-        .col-sm-6.col-sm-offset-3
-            h1
-                span.fa.fa-sign-in
-                |  Signup
-            // LOGIN FORM
-            form(action='/signup', method='post')
-                .form-group
-                    label Username
-                    input.form-control(ng-model='signup.userName', type='text', name='userName')
-                .form-group
-                    label Password
-                    input.form-control(ng-model='signup.password', type='password', name='password')
-                .form-group
-                    label Email
-                    input.form-control(ng-model='signup.email', type='email', name='email')
-                .form-group
-                    label Name
-                    input.form-control(ng-model='signup.name', type='text', name='name')
-                .form-group
-                    label Address
-                    input.form-control(ng-model='signup.address', type='text', name='address')
-                .form-group
-                    label Phone number
-                    input.form-control(ng-model='signup.phNo', type='text', name='phNo')
-                .form-group
-                    label Zipcode
-                    input.form-control(ng-model='signup.zipCode', type='text', name='zipCode')
-                button.btn.btn-warning.btn-lg(type='submit') Signup
-            hr
-            p
-                | Already have an account?
-                a(href='/login') Login
-            p
-                | Or go
-                a(href='/') home
-                | .
-
+doctype html
+html
+    head
+        title
+        link(rel='stylesheet', href='/stylesheets/css/style.css')
+        link(rel='stylesheet', href='/stylesheets/bower_components/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/bower_components/bootstrap/dist/css/bootstrap-theme.min.css')
+    body(ng-app='validationApp', ng-controller='mainController')
+        script(src='/javascripts/bower_components/angular/angular.js')
+        script(src='/javascripts/controllers/loginValidation.js')
+        nav.navbar.navbar-inverse
+            .container-fluid
+                #myNavbar.collapse.navbar-collapse
+                    ul.nav.navbar-nav.nav-tabs
+                        li
+                            a(href='#') Home
+                        li
+                            a(href='#menu') Menu
+                        li
+                            a(href='#about') About
+                        li
+                            a(href='#contact') Contact
+                        li
+                            button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#myModal')
+                                #cart
+                                    span.glyphicon.glyphicon-shopping-cart Cart
+                            #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+                                .modal-dialog
+                                    .modal-content
+                                        .modal-header
+                                            button.close(type='button', data-dismiss='modal')
+                                                span(aria-hidden='true') ×
+                                                span.sr-only Close
+                                            h4#myModalLabel.modal-title Modal title
+                                        .modal-body ...
+                                        .modal-footer
+                                            button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                            button.btn.btn-primary(type='button') Save changes
+                    ul.nav.navbar-nav.navbar-right
+                        ul.nav.navbar-nav.nav-tabs
+                            li
+                                a(href='/login')
+                                    span.glyphicon.glyphicon-log-in Login
+        .container
+            .col-sm-6.col-sm-offset-3
+                h1
+                    span.fa.fa-sign-in
+                    |  Signup
+                -if(signupMessage)
+                    .alert.alert-danger !{signupMessage}
+                // LOGIN FORM
+                form(name='signup', action='/signup', method='post', novalidate='')
+                    .form-group
+                        label Username
+                        input.form-control(ng-model='user.userName', type='text', name='userName', ng-minlength='3', ng-maxlength='8', required='')
+                        p.help-block(ng-show='signup.userName.$invalid && !signup.userName.$pristine && signup.userName.$error.minlength') Username is too short.
+                        p.help-block(ng-show='signup.userName.$invalid && !signup.userName.$pristine && signup.userName.$error.maxlength') Username is too long.
+                    .form-group
+                        label Password
+                        input.form-control(ng-model='password', type='password', name='password', ng-minlength='6', required='')
+                        p.help-block(ng-show='signup.password.$invalid && !signup.password.$pristine && signup.password.$error.minlength') Password is too short.
+                    .form-group
+                        label Email
+                        input.form-control(ng-model='email', type='email', name='email', required='')
+                        p.help-block(ng-show='signup.email.$invalid && !signup.email.$pristine') Enter a valid email.
+                    .form-group
+                        label Name
+                        input.form-control(ng-model='name', type='text', name='name', ng-pattern='/^[a-zA-Z]*$/', required='')
+                        p.help-block(ng-show='signup.name.$error.pattern && !signup.name.$pristine') Enter a valid name
+                    .form-group
+                        label Address
+                        input.form-control(ng-model='address', type='text', name='address', ng-pattern='/^[a-zA-Z0-9 ]*$/', required='')
+                        p.help-block(ng-show='signup.address.$error.pattern && !signup.address.$pristine') Enter a valid address
+                    .form-group
+                        label Phone number
+                        input.form-control(ng-model='phNo', type='text', name='phNo', ng-maxlength='10', required='')
+                        p.help-block(ng-show='signup.phNo.$invalid && !signup.phNo.$pristine') Enter a valid phone number
+                    .form-group
+                        label Zipcode
+                        input.form-control(ng-model='zipCode', type='text', name='zipCode', ng-maxlength='5', required='')
+                        p.help-block(ng-show='signup.zipCode.$invalid && !signup.zipCode.$pristine') Enter a valid zipcode
+                    button.btn.btn-warning.btn-lg(type='submit', ng-disabled='signup.$invalid') Signup
+                hr
+                p
+                    | Already have an account?
+                    a(href='/login') Login
+                p
+                    | Or go
+                    a(href='/') home
+                    | .
+            footer
+                .navbar.navbar-inverse.navbar-fixed-bottom
+                    .container
+                        #footer-body.navbar-collapse.collapse
+                            ul.nav.navbar-nav
+                                li
+                                    a(href='#') Browse Our Library
+                                li
+                                    a(href='#') About Us
+                                li
+                                    a(href='#') Contact Us
+                                li
+                                    a(href='#') Our Partners
+                                li
+                                    a(href='#') User Review
+                                li
+                                    a(href='#') Terms & Conditions
+                                li
+                                    a(href='#') Privacy Policy
+                        .navbar-header
+                            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#footer-body')
+                                span.icon-bar
+                                span.icon-bar
+                                span.icon-bar
+                            ul.footer-bar-btns.visible-xs
+                                li
+                                    a.btn(href='#', title='History')
+                                        i.fa.fa-2x.fa-clock-o.blue-text
+                                li
+                                    a.btn(href='#', title='Favourites')
+                                        i.fa.fa-2x.fa-star.yellow-text
+                                li
+                                    a.btn(href='#', title='Subscriptions')
+                                        i.fa.fa-2x.fa-rss-square.orange-text
