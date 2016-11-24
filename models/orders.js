@@ -14,7 +14,7 @@ var orderSchema = new mongoose.Schema({
     user: {type: mongoose.Types.ObjectId, ref: 'User'},
     deliveryAddress: String,
     // price details
-    items: [OrderDetailsSchema],
+    items: [orderDetailsSchema],
     total: {type: Number, required: true},
     // payment info
     status: {type: String, default: 'pending'}, // pending, paid/failed, delivered, canceled, refunded.

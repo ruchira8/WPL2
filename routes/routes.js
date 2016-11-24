@@ -1,26 +1,34 @@
+var Product = require('../models/products');
 module.exports = function (app, passport) {
     app.get('/', function (req, res) {
         res.render('index.jade'); // load the index.ejs file
     });
-
-    app.get('/login', function(req, res) {
-        res.render('index.jade',{ message: req.flash('loginMessage')});
+    app.get('/menu', function (req, res) {
+        res.render('menu.jade');
+    });
+    app.get('/getMenu', function (req, res) {
+        Product.find(function (err, products) {
+            res.send(products);
+        })
+    });
+    app.get('/login', function (req, res) {
+        res.render('index.jade', {message: req.flash('loginMessage')});
     });
     app.get('/signup', function (req, res) {
-        res.render('signup.jade',{ message: req.flash('signupMessage')});
+        res.render('signup.jade', {message: req.flash('signupMessage')});
     });
-   app.get('/success', function (req, res) {
+    app.get('/success', function (req, res) {
         res.render('success.jade');
     });
 
-    app.get('/home', function(req, res) {
+    app.get('/home', function (req, res) {
         res.render('home.jade');
     });
 
     /*app.get('/success', isLoggedInAjax, function(req, res) {
-        return res.json(req.user);
-        //console.log("res.json(req.user)"+res.json(req.user));
-    });*/
+     return res.json(req.user);
+     //console.log("res.json(req.user)"+res.json(req.user));
+     });*/
 
     app.post('/signup', function (req, res, next) {
         passport.authenticate('local-signup', function (err, user, info) {
@@ -49,7 +57,7 @@ module.exports = function (app, passport) {
             }
             if (!user) {
                 console.log("info" + info);
-                res.render('index.jade',{ message: req.flash('loginMessage')});
+                res.render('index.jade', {message: req.flash('loginMessage')});
             }
             req.logIn(user, function (err) {
                 if (err) {
@@ -57,15 +65,16 @@ module.exports = function (app, passport) {
                 }
                 return res.redirect('/success');
             });
-        },{failureFlash:true})(req, res, next);
+        }, {failureFlash: true})(req, res, next);
     });
     function isLoggedInAjax(req, res, next) {
         if (!req.isAuthenticated()) {
-            return res.json( { redirect: '/login' } );
+            return res.json({redirect: '/login'});
         } else {
             next();
         }
     }
+
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())
             return next();

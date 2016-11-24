@@ -32,7 +32,7 @@ app.use(session({secret: 'donut'}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
     res.locals.loginMessage = req.flash('loginMessage');
     res.locals.signupMessage = req.flash('signupMessage');
     next();
@@ -55,11 +55,10 @@ app.use(express.static('public'));
 //app.use(express.bodyParser());
 
 
-
-
-var User = require('./models/user');
-var Admin = require('./models/admin');
-
+//var User = require('./models/user');
+//var Admin = require('./models/admin');
+var Product = require('./models/products');
+var Topping = require('./models/toppings');
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
@@ -82,18 +81,53 @@ app.use(function (err, req, res, next) {
 app.listen(3000);
 console.log('The magic happens on port 3000');
 
+/*var topping1 = new Topping();
+ topping1.name = "Onions";
+ topping1.price = 1;
+ topping1.save(function (err) {
+ if (err) {
+ console.log("Error saving");
+ } else {
+ console.log("Saved");
+ }
+ });
+ var topping2 = new Topping();
+ topping2.name = "Tomatoes";
+ topping2.price = 1;
+ topping2.save(function (err) {
+ if (err) {
+ console.log("Error saving");
+ } else {
+ console.log("Saved");
+ }
+ });*/
+/*var product = new Product();
+ product.name = "Spicy Italian";
+ product.description = "Pepperoni plus a double portion of spicy Italian sausage.";
+ product.image = "spicyItalian.jpg";
+ product.price = [{size: "small", price: 9}, {size: "medium", price: 12}, {size: "large", price: 14}];
+ product.available = true;
+ product.save(function (err) {
+ if (err) {
+ console.log("Error saving");
+ } else {
+ console.log("Saved");
+ }
+ });*/
+
+
 /*var admin = new Admin();
-    admin.userName= "admin";
-    admin.email= "admin@email.com";
-    admin.name= "admin";
-    admin.password= bcrypt.hashSync("password", bcrypt.genSaltSync(8), null);
-    admin.save(function(err){
-        if (err) {
-            console.log("Error saving");
-        } else {
-            console.log("Saved");
-        }
-    });*/
+ admin.userName= "admin";
+ admin.email= "admin@email.com";
+ admin.name= "admin";
+ admin.password= bcrypt.hashSync("password", bcrypt.genSaltSync(8), null);
+ admin.save(function(err){
+ if (err) {
+ console.log("Error saving");
+ } else {
+ console.log("Saved");
+ }
+ });*/
 
 /*var password = "priyanka";
  var newUser = new User();
