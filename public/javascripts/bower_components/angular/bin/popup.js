@@ -34,11 +34,40 @@ $(function() {
         $(".user_register").hide();
     });
 
+    $("#addressform" ).click(function() {
+        $('#modal').show();
+
+    });
+
+    $("#pickup" ).click(function() {
+        document.write("the near by stores is in : Richardson");
+        $("addForm").hide();
+
+    });
+
+    $("#delivery" ).click(function() {
+        $("addForm").show();
+
+    });
+
+    $("#start_modal_trigger" ).click(function() {
+        $('#start_order').show();
+        $('#addForm').hide();
+
+    });
+
     $("#close" ).click(function() {
         alert("so you wish to continue as guest!!")
         $('#modal').hide();
 
     });
+
+    $("#closeform" ).click(function() {
+        alert("Please pick a mode of delivery!!")
+        $('#start_order').hide();
+
+    });
+
 
     $("#existinguser" ).click(function() {
         $(".user_login").show();

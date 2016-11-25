@@ -30,7 +30,7 @@ h1 {
   background: #FFF;
 }
 
-.img.mySlides{
+#img.mySlides{
   width: 330px;
   height: 1170px;
 }
@@ -92,7 +92,7 @@ a.btn_red {
   position: absolute;
   right: 0;
   top: 0;
-  padding: 10px 15px;
+  padding: 7px 7px;
   background: #E4E4E2;
   cursor: pointer;
   color: #aaa;
@@ -103,28 +103,6 @@ a.btn_red {
   padding: 20px;
 }
 /* Social Login Form */
-
-.social_login {}
-
-.social_login .social_box {
-  display: block;
-  clear: both;
-  padding: 10px;
-  margin-bottom: 10px;
-  background: #F4F4F2;
-  overflow: hidden;
-}
-
-.social_login .icon {
-  display: block;
-  width: 10px;
-  padding: 5px 10px;
-  margin-right: 10px;
-  float: left;
-  color: #FFF;
-  font-size: 16px;
-  text-align: center;
-}
 
 
 .centeredText {
@@ -145,9 +123,10 @@ a.btn_red {
 }
 /* User Login Form */
 
-.user_login {
+.user_login .mode_of_delivery .addForm{
   display: none;
 }
+
 
 .user_login label {
   display: block;
@@ -196,6 +175,10 @@ a.btn_red {
 .user_register label {
   display: block;
   margin-bottom: 5px;
+}
+
+.deliveryMode {
+  display: none;
 }
 
 .user_register input[type="text"],
