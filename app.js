@@ -59,7 +59,7 @@ app.use(express.static('public'));
 //var User = require('./models/user');
 //var Admin = require('./models/admin');
 var Product = require('./models/products');
-var Topping = require('./models/toppings');
+//var Topping = require('./models/toppings');
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
@@ -81,6 +81,13 @@ app.use(function (err, req, res, next) {
 //module.exports = app;
 app.listen(3000);
 console.log('The magic happens on port 3000');
+
+/*Product.findOneAndUpdate({ image: 'peperoni.jpg' }, { image: '/images/peperoni.jpg' }, function(err, user) {
+ if (err) throw err;
+
+ // we have the updated user returned to us
+ console.log(user);
+ });*/
 
 /*var topping1 = new Topping();
  topping1.name = "Onions";

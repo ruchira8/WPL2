@@ -1,3 +1,4 @@
+var Product = require('../models/products');
 module.exports = function (app, passport) {
     app.get('/', function (req, res) {
         res.render('index.jade'); // load the index.ejs file
@@ -18,7 +19,14 @@ module.exports = function (app, passport) {
     app.get('/home', function(req, res) {
         res.render('home.jade');
     });
-
+    app.get('/menu', function (req, res) {
+        res.render('menu.jade');
+    });
+    app.get('/getMenu', function (req, res) {
+        Product.find(function (err, products) {
+            res.send(products);
+        })
+    });
     /*app.get('/success', isLoggedInAjax, function(req, res) {
         return res.json(req.user);
         //console.log("res.json(req.user)"+res.json(req.user));
