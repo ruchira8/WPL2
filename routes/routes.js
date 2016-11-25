@@ -2,7 +2,9 @@ module.exports = function (app, passport) {
     app.get('/', function (req, res) {
         res.render('index.jade'); // load the index.ejs file
     });
-
+    app.get('/admin', function (req, res) {
+        res.render('admin.jade'); // load the index.ejs file
+    });
     app.get('/login', function(req, res) {
         res.render('index.jade',{ message: req.flash('loginMessage')});
     });
@@ -54,6 +56,9 @@ module.exports = function (app, passport) {
             req.logIn(user, function (err) {
                 if (err) {
                     return next(err);
+                }
+                if(user.userName=='admin1'){
+                    return res.redirect('/admin');
                 }
                 return res.redirect('/success');
             });

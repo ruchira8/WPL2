@@ -5,9 +5,28 @@ html
         link(rel='stylesheet', href='/stylesheets/css/style.css')
         link(rel='stylesheet', href='/stylesheets/bower_components/bootstrap/dist/css/bootstrap.min.css')
         link(rel='stylesheet', href='/stylesheets/bower_components/bootstrap/dist/css/bootstrap-theme.min.css')
-    body(ng-app='validationApp', ng-controller='mainController')
         script(src='/javascripts/bower_components/angular/angular.js')
-        script(src='/javascripts/controllers/loginValidation.js')
+        script.
+            var validationApp = angular.module("validationApp", []);
+            validationApp.controller("PasswordController", function($scope) {
+                var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\\\\\\$%\^&\*])(?=.{6,})");
+                var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{4,})");
+                $scope.passwordStrength = {
+                    "width": "100px",
+                    "height": "25px",
+                    "margin-left": "5px"
+                };
+                $scope.analyze = function(value) {
+                    if(strongRegex.test(value)) {
+                        $scope.passwordStrength["background-color"] = "green";
+                    } else if(mediumRegex.test(value)) {
+                        $scope.passwordStrength["background-color"] = "orange";
+                    } else {
+                        $scope.passwordStrength["background-color"] = "red";
+                    }
+                };
+            });
+    body(ng-app='validationApp', ng-controller='PasswordController')
         nav.navbar.navbar-inverse
             .container-fluid
                 #myNavbar.collapse.navbar-collapse
@@ -57,8 +76,11 @@ html
                         p.help-block(ng-show='signup.userName.$invalid && !signup.userName.$pristine && signup.userName.$error.maxlength') Username is too long.
                     .form-group
                         label Password
-                        input.form-control(ng-model='password', type='password', name='password', ng-minlength='6', required='')
+                        input.form-control(ng-model='password', type='password', name='password', ng-minlength='5', ng-change='analyze(password)', required='')
                         p.help-block(ng-show='signup.password.$invalid && !signup.password.$pristine && signup.password.$error.minlength') Password is too short.
+                    .form-group
+                        p Password Strength
+                        div(ng-style='passwordStrength')
                     .form-group
                         label Email
                         input.form-control(ng-model='email', type='email', name='email', required='')
@@ -73,12 +95,12 @@ html
                         p.help-block(ng-show='signup.address.$error.pattern && !signup.address.$pristine') Enter a valid address
                     .form-group
                         label Phone number
-                        input.form-control(ng-model='phNo', type='text', name='phNo', ng-maxlength='10', required='')
-                        p.help-block(ng-show='signup.phNo.$invalid && !signup.phNo.$pristine') Enter a valid phone number
+                        input.form-control(ng-model='phNo', type='text', name='phNo', ng-minlength='10', ng-maxlength='10', ng-pattern='/^[0-9]{10}$/', required='')
+                        p.help-block(ng-show='signup.phNo.$error.pattern && signup.phNo.$invalid && !signup.phNo.$pristine') Enter a valid phone number
                     .form-group
                         label Zipcode
-                        input.form-control(ng-model='zipCode', type='text', name='zipCode', ng-maxlength='5', required='')
-                        p.help-block(ng-show='signup.zipCode.$invalid && !signup.zipCode.$pristine') Enter a valid zipcode
+                        input.form-control(ng-model='zipCode', type='text', name='zipCode', ng-minlength='5', ng-maxlength='5', ng-pattern='/^[0-9]{5}$/', required='')
+                        p.help-block(ng-show='signup.zipCode.$error.pattern && signup.zipCode.$invalid && !signup.zipCode.$pristine') Enter a valid zipcode
                     button.btn.btn-warning.btn-lg(type='submit', ng-disabled='signup.$invalid') Signup
                 hr
                 p

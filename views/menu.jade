@@ -1,0 +1,14 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        link(rel='stylesheet', type='text/css', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', type='text/css', href='bower_components/bootstrap/dist/css/bootstrap-theme.min.css')
+        title Menu
+    body
+        .container
+            div(ng-app='menu', ng-controller='MenuCtrl as app')
+                ul
+                    li(ng-repeat='product in app.products') {{product.name}}
+        script(src='/javascripts/bower_components/angular/angular.js')
+        script(src='/javascripts/controllers/menuController.js')

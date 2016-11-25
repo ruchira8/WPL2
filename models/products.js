@@ -1,12 +1,9 @@
 var mongoose = require("mongoose");
+var topping = require('../models/toppings');
 var productSchema = new mongoose.Schema({
     name: {
         type: String,
         unique: true,
-        required: true
-    },
-    type: {
-        type: String,
         required: true
     },
     description: {
@@ -23,11 +20,5 @@ var productSchema = new mongoose.Schema({
     },
     price: [{size: String, price: Number}]
 });
-var toppingSchema = new mongoose.Schema({
-    type: {
-        type: String,
-        required: true
-    },
-    toppings: [{name: String, price: Number}]
-});
+
 module.exports = mongoose.model('Product', productSchema);
