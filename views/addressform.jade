@@ -1,0 +1,70 @@
+extends layout
+block append content
+    .container-fluid
+        .row
+            .col-md-4.col-md-offset-4
+                //button.btn.btn-warning.custom-button-width(type='button', class='.navbar-right') I have an account
+                //button.btn.btn-danger.custom-button-width(type='button', class='.navbar-right') Guest user
+                .btn-toolbar
+                    button#btnSubmit.btn.btn-primary.btn-sm(type='button') I have an account
+                    button#btnCancel.btn.btn-primary.btn-sm(type='button') Guest user
+
+
+
+
+
+    hr
+
+    .row
+        .col-md-4.col-md-offset-4
+            form.form-horizontal(role='form')
+                fieldset
+                    // Form Name
+                    legend Address Details
+                    //Text-input
+                    .form-group
+                        label.col-sm-2.control-label(for='textinput') Full Name
+                        .col-sm-10
+                            input.form-control(type='text', placeholder='Whats your good name?')
+                    //Text input
+                    .form-group
+                        label.col-sm-2.control-label(for='email') Email Address
+                        .col-sm-10
+                            input.form-control(type='text', placeholder='xyz@test.com')
+                    // Text input
+                    .form-group
+                        label.col-sm-2.control-label(for='textinput') Line 1
+                        .col-sm-10
+                            input.form-control(type='text', placeholder='Address Line 1')
+                    // Text input
+                    .form-group
+                        label.col-sm-2.control-label(for='textinput') Line 2
+                        .col-sm-10
+                            input.form-control(type='text', placeholder='Address Line 2')
+                    // Text input
+                    .form-group
+                        label.col-sm-2.control-label(for='textinput') City
+                        .col-sm-10
+                            input.form-control(type='text', placeholder='City')
+                    // Text input
+                    .form-group
+                        label.col-sm-2.control-label(for='textinput') State
+                        .col-sm-4
+                            input.form-control(type='text', placeholder='State')
+                        label.col-sm-2.control-label(for='textinput') Postcode
+                        .col-sm-4
+                            input.form-control(type='text', placeholder='Post Code')
+                    // Text input
+                    .form-group
+                        label.col-sm-2.control-label(for='textinput') Country
+                        .col-sm-10
+                            input.form-control(type='text', placeholder='Country')
+                    .form-group
+                        .col-sm-offset-2.col-sm-10
+                            .pull-right
+                                button.btn.btn-default(type='submit') Cancel
+                                button.btn.btn-primary(type='submit') Save
+
+
+
+

@@ -50,6 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // load our routes and pass in our app and fully configured passport
 app.use(express.static('public'));
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 

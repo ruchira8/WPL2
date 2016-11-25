@@ -19,6 +19,11 @@ module.exports = function (app, passport) {
     app.get('/home', function(req, res) {
         res.render('home.jade');
     });
+
+    app.get('/addressform', function(req, res) {
+        res.render('addressform.jade');
+    });
+
     app.get('/menu', function (req, res) {
         res.render('menu.jade');
     });

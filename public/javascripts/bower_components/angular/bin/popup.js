@@ -41,18 +41,17 @@ $(function() {
 
     $("#pickup" ).click(function() {
         document.write("the near by stores is in : Richardson");
-        $("addForm").hide();
+
 
     });
 
-    $("#delivery" ).click(function() {
-        $("addForm").show();
-
-    });
+    // $("#delivery").click(function()  {
+    //     location.href=url('/addressform');
+    // } );
 
     $("#start_modal_trigger" ).click(function() {
         $('#start_order').show();
-        $('#addForm').hide();
+
 
     });
 
