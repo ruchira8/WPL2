@@ -112,7 +112,7 @@ console.log('The magic happens on port 3000');
 /*var product = new Product();
  product.name = "Spicy Italian";
  product.description = "Pepperoni plus a double portion of spicy Italian sausage.";
- product.image = "spicyItalian.jpg";
+ product.image = "/images/spicyItalian.jpg";
  product.price = [{size: "small", price: 9}, {size: "medium", price: 12}, {size: "large", price: 14}];
  product.available = true;
  product.save(function (err) {
