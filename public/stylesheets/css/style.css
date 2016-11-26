@@ -1,230 +1,266 @@
-body {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 14px;
-    color: #666;
+ody {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  color: #666;
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 0;
-    margin-top: 60px;
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 60px;
 }
 
 #lean_overlay {
-    position: fixed;
-    z-index: 100;
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    width: 100%;
-    background: #000;
-    display: none;
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  display: none;
 }
 
 .popupContainer {
-    position: absolute;
-    width: 330px;
-    height: auto;
-    left: 45%;
-    top: 60px;
-    background: #FFF;
+  position: absolute;
+  width: 330px;
+  height: auto;
+  left: 45%;
+  top: 60px;
+  background: #FFF;
 }
 
 #img.mySlides {
-    width: 330px;
-    height: 1170px;
+  width: 330px;
+  height: 1170px;
 }
 
 .btn {
-    padding: 10px 20px;
-    background: #F4F4F2;
+  padding: 10px 20px;
+  background: #F4F4F2;
 }
 
 .btn_red {
-    background: #ED6347;
-    color: #FFF;
+  background: #ED6347;
+  color: #FFF;
 }
 
 .btn:hover {
-    background: #E4E4E2;
+  background: #E4E4E2;
 }
 
 .btn_red:hover {
-    background: #C12B05;
+  background: #C12B05;
 }
 
 a.btn {
-    color: #666;
-    text-align: center;
-    text-decoration: none;
+  color: #666;
+  text-align: center;
+  text-decoration: none;
 }
 
 a.btn_red {
-    color: #FFF;
+  color: #FFF;
 }
 
 .one_half {
-    width: 50%;
-    display: block;
-    float: left;
+  width: 50%;
+  display: block;
+  float: left;
 }
 
 .one_half.last {
-    width: 45%;
-    margin-left: 5%;
+  width: 45%;
+  margin-left: 5%;
 }
 
 /* Popup Styles*/
 
 .popupHeader {
-    font-size: 16px;
-    text-transform: uppercase;
+  font-size: 16px;
+  text-transform: uppercase;
 }
 
 .popupHeader {
-    background: #F4F4F2;
-    position: relative;
-    padding: 10px 20px;
-    border-bottom: 1px solid #DDD;
-    font-weight: bold;
+  background: #F4F4F2;
+  position: relative;
+  padding: 10px 20px;
+  border-bottom: 1px solid #DDD;
+  font-weight: bold;
 }
 
 .popupHeader .modal_close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 7px 7px;
-    background: #E4E4E2;
-    cursor: pointer;
-    color: #aaa;
-    font-size: 16px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px 7px;
+  background: #E4E4E2;
+  cursor: pointer;
+  color: #aaa;
+  font-size: 16px;
 }
 
 .popupBody {
-    padding: 20px;
+  padding: 20px;
 }
 
 /* Social Login Form */
 
 .centeredText {
-    text-align: center;
-    margin: 20px 0;
-    clear: both;
-    overflow: hidden;
-    text-transform: uppercase;
+  text-align: center;
+  margin: 20px 0;
+  clear: both;
+  overflow: hidden;
+  text-transform: uppercase;
 }
 
 .action_btns {
-    clear: both;
-    overflow: hidden;
+  clear: both;
+  overflow: hidden;
 }
 
 .action_btns a {
-    display: block;
+  display: block;
 }
 
 /* User Login Form */
 
 .user_login .mode_of_delivery .addForm {
-    display: none;
+  display: none;
 }
 
 .user_login label {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .user_login input[type="text"],
 .user_login input[type="email"],
 .user_login input[type="password"] {
-    display: block;
-    width: 90%;
-    padding: 10px;
-    border: 1px solid #DDD;
-    color: #666;
+  display: block;
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #DDD;
+  color: #666;
 }
 
 .user_login input[type="checkbox"] {
-    float: left;
-    margin-right: 5px;
+  float: left;
+  margin-right: 5px;
 }
 
 .user_login input[type="checkbox"] + label {
-    float: left;
+  float: left;
 }
 
 .user_login .checkbox {
-    margin-bottom: 10px;
-    clear: both;
-    overflow: hidden;
+  margin-bottom: 10px;
+  clear: both;
+  overflow: hidden;
 }
 
 .forgot_password {
-    display: block;
-    margin: 20px 0 10px;
-    clear: both;
-    overflow: hidden;
-    text-decoration: none;
-    color: #ED6347;
+  display: block;
+  margin: 20px 0 10px;
+  clear: both;
+  overflow: hidden;
+  text-decoration: none;
+  color: #ED6347;
 }
 
 /* User Register Form */
 
 .user_register {
-    display: none;
+  display: none;
 }
 
 .user_register label {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .deliveryMode {
-    display: none;
+  display: none;
 }
 
 .user_register input[type="text"],
 .user_register input[type="email"],
 .user_register input[type="password"] {
-    display: block;
-    width: 90%;
-    padding: 10px;
-    border: 1px solid #DDD;
-    color: #666;
+  display: block;
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #DDD;
+  color: #666;
 }
 
 .user_register input[type="checkbox"] {
-    float: left;
-    margin-right: 5px;
+  float: left;
+  margin-right: 5px;
 }
 
 .user_register input[type="checkbox"] + label {
-    float: left;
+  float: left;
 }
 
 .user_register .checkbox {
-    margin-bottom: 10px;
-    clear: both;
-    overflow: hidden;
+  margin-bottom: 10px;
+  clear: both;
+  overflow: hidden;
 }
 
 .slideanim {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .slide {
-    animation-name: slide;
-    -webkit-animation-name: slide;
-    animation-duration: 1s;
-    -webkit-animation-duration: 1s;
-    visibility: visible;
+  animation-name: slide;
+  -webkit-animation-name: slide;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  visibility: visible;
 }
 
 .container-fluid {
-    padding: 60px 50px;
+  padding: 60px 50px;
 }
 
 .productImage {
-    height: 200px;
-    width: 200px;
+  height: 200px;
+  width: 200px;
+}
+
+.group {
+  clear: both;
+  *zoom: 1;
+}
+section {
+  float: left;
+  margin: 0 1.5%;
+  width: 63%;
+}
+aside {
+  float: right;
+  margin: 0 1.5%;
+  width: 30%;
+}
+
+div.image-wrapper {
+  height: 600px; /* Suggestive number; pick your own height as desired */
+  position: relative;
+  overflow: hidden; /* This will do the magic */
+  width: 800px; /* Pick an appropriate width as desired, unless you already use a grid, in that case use 100% */
+  border-color: #2b669a;
+}
+img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: auto;
+}
+
+h4 {
+  font-size:16px;
+  font-weight:700;
+  font-family: 'Source Sans Pro', sans-serif;
 }

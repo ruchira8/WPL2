@@ -16,6 +16,10 @@ module.exports = function (app, passport) {
         res.render('success.jade');
     });
 
+    app.get('/placeOrder', function (req, res) {
+        res.render('placeOrder.jade');
+    });
+
     app.get('/home', function(req, res) {
         res.render('home.jade');
     });
