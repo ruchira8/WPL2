@@ -30,9 +30,10 @@ h1 {
   background: #FFF;
 }
 
-#img.mySlides {
-  width: 330px;
-  height: 1170px;
+.mySlides {
+  width: 1170px;
+  height: 330px;
+  position: relative;
 }
 
 .btn {
