@@ -59,7 +59,8 @@ app.use(express.static('public'));
 
 //var User = require('./models/user');
 //var Admin = require('./models/admin');
-var Product = require('./models/products');
+//var Product = require('./models/products');
+var Order = require('./models/orders');
 //var Topping = require('./models/toppings');
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -83,6 +84,22 @@ app.use(function (err, req, res, next) {
 app.listen(3000);
 console.log('The magic happens on port 3000');
 
+
+/*var order = new Order();
+order.id=2;
+order.user="58335cdd4411c30235f8472e";
+order.deliveryAddress='richardson';
+order.items=[{product:"5838597aa1acf9041dac7650",quantity:3,total:3}];
+order.total=10;
+order.status="paid";
+order.type='pizza';
+order.save(function (err) {
+    if (err) {
+        console.log("Error saving"+err);
+    } else {
+        console.log("Saved");
+    }
+});*/
 /*Product.findOneAndUpdate({ image: 'peperoni.jpg' }, { image: '/images/peperoni.jpg' }, function(err, user) {
  if (err) throw err;
 
@@ -110,7 +127,7 @@ console.log('The magic happens on port 3000');
  console.log("Saved");
  }
  });*/
-/*var product = new Product();
+ /*var product = new Product();
  product.name = "Spicy Italian";
  product.description = "Pepperoni plus a double portion of spicy Italian sausage.";
  product.image = "/images/spicyItalian.jpg";

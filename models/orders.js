@@ -3,7 +3,7 @@ var User = require('../models/user');
 var Product = require('../models/products');
 
 var orderDetailsSchema = new mongoose.Schema({
-    product: {type: mongoose.Types.ObjectId, ref: 'Product'},
+    product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
     quantity: Number,
     total: {type: Number}
 });
@@ -11,7 +11,7 @@ var orderDetailsSchema = new mongoose.Schema({
 var orderSchema = new mongoose.Schema({
     // buyer details
     id: String,
-    user: {type: mongoose.Types.ObjectId, ref: 'User'},
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     deliveryAddress: String,
     // price details
     items: [orderDetailsSchema],

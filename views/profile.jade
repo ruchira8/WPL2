@@ -42,22 +42,15 @@ html
                                 a(href='/logout')
                                     span.glyphicon.glyphicon-log-in Logout
         .container
+            .page-header.text-center
+                h1
+                    span.fa.fa-anchor
+                    |  Welcome, #{user.userName}
             .row
                 // LOCAL INFORMATION
                 .col-sm-6
                     .well
-                        h1
-                            span.fa.fa-anchor
-                            |  Order history:
-                            ul
-                                each item in data
-                                    .well
-                                        li Type: #{item.type}
-                                        li Total Price: #{item.total}
-                                        li Address: #{item.deliveryAddress}
-                                        each i in item.items
-                                            li Quantity: #{i.quantity}
-                                            li Product price: #{i.total}
+                        a(href='/orders') Order history
         footer
             .navbar.navbar-inverse.navbar-fixed-bottom
                 .container

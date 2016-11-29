@@ -1,5 +1,90 @@
-extends layout
-
-block content
-    h1= "Admin Login Successful"
-
+doctype html
+// views/profile.ejs
+html
+    head
+        title
+        link(rel='stylesheet', href='/stylesheets/css/style.css')
+        link(rel='stylesheet', href='/stylesheets/bower_components/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/bower_components/bootstrap/dist/css/bootstrap-theme.min.css')
+    body
+        script(src='/javascripts/bower_components/angular/angular.js')
+        nav.navbar.navbar-inverse
+            .container-fluid
+                #myNavbar.collapse.navbar-collapse
+                    ul.nav.navbar-nav.nav-tabs
+                        li
+                            a(href='#') Home
+                        li
+                            a(href='#menu') Menu
+                        li
+                            a(href='#about') About
+                        li
+                            a(href='#contact') Contact
+                        li
+                            button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#myModal')
+                                #cart
+                                    span.glyphicon.glyphicon-shopping-cart Cart
+                            #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+                                .modal-dialog
+                                    .modal-content
+                                        .modal-header
+                                            button.close(type='button', data-dismiss='modal')
+                                                span(aria-hidden='true')
+                                                span.sr-only Close
+                                            h4#myModalLabel.modal-title Modal title
+                                        .modal-body ...
+                                        .modal-footer
+                                            button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                            button.btn.btn-primary(type='button') Save changes
+                    ul.nav.navbar-nav.navbar-right
+                        ul.nav.navbar-nav.nav-tabs
+                            li
+                                a(href='/logout')
+                                    span.glyphicon.glyphicon-log-in Logout
+        .container
+            .row
+                // LOCAL INFORMATION
+                .col-sm-6
+                    .well
+                        span.fa.fa-anchor
+                        a(href='/admin/products') List Products
+                        span.fa.fa-anchor
+                        a(href='/admin/add') Add new item
+                        span.fa.fa-anchor
+                        a(href='/admin/delete') Delete new item
+                        span.fa.fa-anchor
+                        a(href='/admin/update') Update item
+        footer
+            .navbar.navbar-inverse.navbar-fixed-bottom
+                .container
+                    #footer-body.navbar-collapse.collapse
+                        ul.nav.navbar-nav
+                            li
+                                a(href='#') Browse Our Library
+                            li
+                                a(href='#') About Us
+                            li
+                                a(href='#') Contact Us
+                            li
+                                a(href='#') Our Partners
+                            li
+                                a(href='#') User Review
+                            li
+                                a(href='#') Terms & Conditions
+                            li
+                                a(href='#') Privacy Policy
+                    .navbar-header
+                        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#footer-body')
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        ul.footer-bar-btns.visible-xs
+                            li
+                                a.btn(href='#', title='History')
+                                    i.fa.fa-2x.fa-clock-o.blue-text
+                            li
+                                a.btn(href='#', title='Favourites')
+                                    i.fa.fa-2x.fa-star.yellow-text
+                            li
+                                a.btn(href='#', title='Subscriptions')
+                                    i.fa.fa-2x.fa-rss-square.orange-text
